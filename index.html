@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林见山 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E6B54'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23F6F5F2' font-family='serif' font-weight='700'%3E山%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+  :root{
+    --bg:#F6F5F2;
+    --paper:#EFEDEA;
+    --ink:#1C1E1C;
+    --ink-soft:#3A3E3B;
+    --muted:#6B706D;
+    --line:#D9D7D2;
+    --accent:#1E6B54;
+    --accent-soft:#E3EDEA;
+    --max:680px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+    font-size:17px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(30,107,84,.25);transition:border-color .2s}
+  a:hover{border-bottom-color:var(--accent)}
+
+  /* ===== 页眉 ===== */
+  header{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:64px 24px 40px;
+  }
+  .masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .masthead .name{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:.08em;
+  }
+  .masthead nav{
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    gap:22px;
+  }
+  .masthead nav a{color:var(--muted);border:none}
+  .masthead nav a:hover{color:var(--accent)}
+
+  /* ===== Hero ===== */
+  .hero{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:72px 24px 56px;
+  }
+  .hero .kicker{
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:13px;
+    letter-spacing:.18em;
+    color:var(--accent);
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:44px;
+    line-height:1.35;
+    font-weight:900;
+    letter-spacing:.01em;
+    margin-bottom:28px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--accent);
+  }
+  .hero p.lead{
+    font-size:18px;
+    color:var(--ink-soft);
+    line-height:1.95;
+    max-width:32em;
+  }
+
+  /* ===== 正文区 ===== */
+  main{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px 80px;
+  }
+  section{
+    padding:48px 0;
+    border-top:1px solid var(--line);
+  }
+  section:first-of-type{border-top:none;padding-top:24px}
+  h2{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.16em;
+    color:var(--muted);
+    margin-bottom:28px;
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+  }
+  h2 .num{
+    color:var(--accent);
+    margin-right:10px;
+  }
+  p{
+    margin-bottom:22px;
+    color:var(--ink-soft);
+  }
+  p strong{color:var(--ink);font-weight:600}
+
+  blockquote{
+    margin:32px 0;
+    padding:24px 28px;
+    background:var(--paper);
+    border-left:3px solid var(--accent);
+    font-size:18px;
+    color:var(--ink);
+    line-height:1.85;
+  }
+  blockquote cite{
+    display:block;
+    margin-top:12px;
+    font-size:13px;
+    font-style:normal;
+    color:var(--muted);
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+  }
+
+  /* 随笔条目 */
+  .entry{
+    margin-bottom:40px;
+  }
+  .entry .date{
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+  .entry h3{
+    font-size:21px;
+    font-weight:700;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+
+  /* 列表 */
+  ul.plain{
+    list-style:none;
+    margin:8px 0 24px;
+  }
+  ul.plain li{
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    color:var(--ink-soft);
+  }
+  ul.plain li:last-child{border-bottom:none}
+  ul.plain li .tag{
+    display:inline-block;
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:11px;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:2px 8px;
+    border-radius:3px;
+    margin-right:10px;
+    letter-spacing:.08em;
+  }
+
+  /* 联系 */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:16px;
+  }
+  .contact-grid .cell{
+    background:var(--paper);
+    padding:18px 20px;
+    border-radius:4px;
+  }
+  .contact-grid .label{
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:11px;
+    letter-spacing:.16em;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .contact-grid .value{
+    font-size:15px;
+    color:var(--ink);
+  }
+
+  /* 页脚 */
+  footer{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:32px 24px 64px;
+    border-top:1px solid var(--line);
+    font-family:"Noto Sans SC", system-ui, sans-serif;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:.08em;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  /* 响应式 */
+  @media (max-width:640px){
+    body{font-size:16px}
+    .hero{padding:48px 20px 40px}
+    .hero h1{font-size:32px}
+    .hero p.lead{font-size:16px}
+    .masthead{flex-direction:column;gap:12px;align-items:flex-start}
+    .masthead nav{flex-wrap:wrap;gap:14px}
+    .contact-grid{grid-template-columns:1fr}
+    footer{flex-direction:column;gap:8px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="masthead">
+    <div class="name">林见山</div>
+    <nav>
+      <a href="#about">关于</a>
+      <a href="#now">近况</a>
+      <a href="#notes">随笔</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">PERSONAL · 个人主页</div>
+  <h1>写字、做事、<br>在生活里慢慢<em>校准</em>。</h1>
+  <p class="lead">你好，我是见山。这里不是作品陈列馆，更像一本摊开的笔记本——记录我在做的事、在读的书、以及一些还没想清楚的念头。如果你刚好读到这里，欢迎多坐一会儿。</p>
+</section>
+
+<main>
+
+  <!-- 关于 -->
+  <section id="about">
+    <h2><span class="num">01</span>关于我</h2>
+    <p>我是一个长期主义者，也是一个不耐烦的人。这两件事在我身上并不矛盾——我相信复利，相信时间会筛掉大部分噪音；但我也受不了把简单的事做复杂，受不了为了流程而流程。所以这些年我一直在找一种平衡：<strong>用十年的眼光选方向，用手艺人的耐心做眼前这件事</strong>。</p>
+    <p>职业上，我做产品与采购相关的工作，在制造和软件之间来回走。白天和供应商谈价格、交期、良率；晚上写代码、读论文、拆一个又一个我不熟悉的系统。这种跨界让我养成一个习惯：遇到任何问题，先问它本质上是一个什么问题，再谈用什么工具解决。</p>
+    <p>生活里，我偏爱步行胜过开车，偏爱纸质书胜过电子书，偏爱一个人吃饭时不看手机。我相信专注是一种可以被训练的肌肉，而不是天赋；也相信身体的诚实——睡眠、饮食、运动，这三件事糊弄不了人。</p>
+    <blockquote>
+      人这一辈子，能把几件事做到「别人一提起就想到你」，已经很不容易。
+      <cite>—— 写在三十岁那年的笔记里</cite>
+    </blockquote>
+  </section>
+
+  <!-- 近况 -->
+  <section id="now">
+    <h2><span class="num">02</span>现在在做什么</h2>
+    <p>今年我把大部分精力放在三件事上。第一，是重新学习系统设计——不是为了转岗，而是为了把工作里那些「凭经验判断」的部分，变成可以讲清楚的方法论。第二，是开始规律写作，每周至少一篇，长短不限。第三，是陪家里人把生活节奏稳住，尤其是孩子刚进入初中，我不想在他最需要陪伴的这几年，被出差占满。</p>
+    <p>我现在读的书比较杂。技术上在读《设计数据密集型应用》和几本关于供应链管理的旧书；文学上在重读汪曾祺和汪老先生谈吃的那些短文；心理学上在补埃里克森的发展阶段理论，想弄明白自己和孩子现在分别站在哪一段。</p>
+    <ul class="plain">
+      <li><span class="tag">在读</span>《Designing Data-Intensive Applications》读到第六章</li>
+      <li><span class="tag">在写</span>一个个人博客，每周一篇，主题不定</li>
+      <li><span class="tag">在练</span>每周三次力量训练，从推胸开始慢慢捡回来</li>
+      <li><span class="tag">在学</span>C++ 和数据结构，陪孩子一起，也给自己补课</li>
+    </ul>
+  </section>
+
+  <!-- 随笔 -->
+  <section id="notes">
+    <h2><span class="num">03</span>最近的一些想法</h2>
+
+    <div class="entry">
+      <div class="date">2026 · 09</div>
+      <h3>关于「专注」这件小事</h3>
+      <p>我曾经以为专注是一种天赋，后来发现它更像一块肌肉。你不需要一天专注八小时，你只需要每天有两到三段、每段四十分钟不被打扰的时间，持续几个月，整个人的状态就会不一样。真正的敌人不是手机，是那种「我现在不看一眼就会错过什么」的焦虑。</p>
+      <p>解决办法说出来很笨：把手机放到另一个房间。不是静音，不是屏幕朝下，是物理上够不着。坚持一周，你会发现大部分消息都不急，大部分通知都可以等。</p>
+    </div>
+
+    <div class="entry">
+      <div class="date">2026 · 08</div>
+      <h3>采购这件事，本质上是在买时间</h3>
+      <p>很多人把采购理解成砍价。砍价当然重要，但更重要的是理解价格背后的结构：原材料、工艺、良率、账期、库存周转。一个好的采购，不是把价格压到最低的人，而是那个<strong>知道这笔钱花出去，换回了什么</strong>的人。</p>
+      <p>我们经常为了省两毛钱，多花两周交期；为了换一家便宜的供应商，多花三个月磨合。这些隐性成本，财务报表上不会单独列出来，但最终都会变成交期延误、质量事故和团队的疲惫。</p>
+    </div>
+
+    <div class="entry">
+      <div class="date">2026 · 07</div>
+      <h3>孩子上初中之后</h3>
+      <p>他去夏令营回来，自己收拾行李、自己定闹钟、自己把脏衣服分好类。我站在门口看了很久，突然意识到：那个需要我蹲下来帮他系鞋带的小孩，已经在悄悄长成一个我需要仰视的人。</p>
+      <p>教育这件事，到了某个阶段，父母的任务就从「教他怎么做」变成「忍住不插手」。这比教他难得多。</p>
+    </div>
+
+    <div class="entry">
+      <div class="date">2026 · 06</div>
+      <h3>把复杂的事情写下来</h3>
+      <p>我有一个坚持了很多年的习惯：遇到想不清楚的问题，先不讨论，先写。把问题、已知条件、我的假设、我担心的后果，全部写在一张纸上。写着写着，你会发现大部分焦虑来自没想清楚，而不是事情本身有多难。</p>
+      <p>写作是思考的手术刀。它逼你把模糊的情绪，变成一句可以被反驳的话。能被反驳，就意味着能被修正。</p>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact">
+    <h2><span class="num">04</span>联系我</h2>
+    <p>如果你对我写的东西有不同看法，或者只是想聊聊你最近在做的事，欢迎写信。我不一定每封都回，但每封都会读。</p>
+    <div class="contact-grid">
+      <div class="cell">
+        <div class="label">EMAIL</div>
+        <div class="value">jianshan@example.com</div>
+      </div>
+      <div class="cell">
+        <div class="label">BLOG</div>
+        <div class="value">jianshan.notes.example.com</div>
+      </div>
+      <div class="cell">
+        <div class="label">所在地</div>
+        <div class="value">上海</div>
+      </div>
+      <div class="cell">
+        <div class="label">更新频率</div>
+        <div class="value">每周一篇，不定期</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 林见山</div>
+  <div>用文字把生活过清楚一点</div>
+</footer>
+
+</body>
+</html>
